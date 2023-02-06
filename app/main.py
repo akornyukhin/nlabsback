@@ -1,8 +1,10 @@
 from fastapi import FastAPI, Depends
 from fastapi.middleware.cors import CORSMiddleware
+from fastapi.encoders import jsonable_encoder
+from fastapi.responses import JSONResponse
 from sqlalchemy.orm import Session
 
-import models, schemas, crud
+import schemas, crud
 from database import SessionLocal
 
 app = FastAPI()
@@ -27,7 +29,7 @@ def get_db():
 def read_root():
     return {"Hello": "World"}
 
-@app.get("/api/v1/users", response_model=list[schemas.User])
+@app.get("/api/v1/getUsers", response_model=list[schemas.User])
 def read_users(db: Session = Depends(get_db)):
     users = crud.get_users(db)
-    return users
+    return JSONResponse(content={"users": jsonable_encoder(users)})
