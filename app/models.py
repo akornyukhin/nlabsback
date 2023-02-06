@@ -10,4 +10,3 @@ class User(Base):
     lastName = Column(String)
     age = Column(Integer)
     city = Column(String)
-    portrait = Column(String)

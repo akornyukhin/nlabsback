@@ -5,7 +5,6 @@ class UserBase(BaseModel):
     lastName: str
     age: int
     city: str
-    portrait: str
 
 class User(UserBase):
     id: int

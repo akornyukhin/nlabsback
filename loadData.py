@@ -12,7 +12,6 @@ for user in data:
         lastName = user["LastName"],
         age = user["Age"],
         city = user["City"],
-        portrait = user["Portrait"]
     )
     db.add(newUser)
     db.commit()

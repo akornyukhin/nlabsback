@@ -31,5 +31,6 @@ def read_root():
 
 @app.get("/api/v1/getUsers", response_model=list[schemas.User])
 def read_users(db: Session = Depends(get_db)):
+    '''Get all users from the database'''
     users = crud.get_users(db)
     return JSONResponse(content={"users": jsonable_encoder(users)})
